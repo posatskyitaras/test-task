@@ -5,7 +5,13 @@
     }
   {% endif %}
 </style>
+
 <div data-section-id="{{ section.id }}" data-section-type="header-section">
+    <div class="banner-head">
+        {{ 'image-collection-banner.jpg' | asset_url | img_tag }}
+         <p class="face">Face</p>
+    </div>
+
   <header role="banner">
     {% if template.name == 'index' %}
       <h1 itemscope itemtype="http://schema.org/Organization">
@@ -28,6 +34,8 @@
     {% else %}
       </div>
     {% endif %}
+
+   
 
     <a href="/cart">
       {% include 'icon-cart' %}

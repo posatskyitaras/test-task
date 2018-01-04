@@ -1,16 +1,22 @@
 @charset "UTF-8";
+
 /*============================================================================
   [replace with theme name] | Built with Slate
     - You cannot use native CSS/Sass @imports in this file without a build script
 ==============================================================================*/
 
+
 /*================ UTILS ================*/
+
 @import url('tools/mixins.scss');
 
 /*================ SETTINGS ================*/
+
 @import url('settings/variables.scss.liquid');
+@import url('settings/fonts.scss.liquid');
 
 /*================ COMMON ================*/
+
 @import url('global/normalize.scss');
 @import url('global/slate-reset.scss');
 @import url('global/helper-classes.scss');
@@ -24,5 +30,7 @@
 @import url('global/blank-states.scss');
 
 /*================ MODULES ================*/
+
 @import url('modules/site-header.scss');
 @import url('modules/gift-card-template.scss');
+@import url('global/main.scss');
