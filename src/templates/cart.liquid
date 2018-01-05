@@ -1,5 +1,156 @@
 {% if cart.item_count > 0 %}
-  <h1>{{ 'cart.general.title' | t }}</h1>
+  
+
+
+  <section class="main-cart-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                <h1 class="title">{{ 'cart.general.title' | t }}</h1>
+
+                <div class="col-md-10 col-md-offset-1 col-sm-12">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-6 col-sm-12">
+                            <div class="row">
+                                <div class="cart-info-title">
+                                    <div class="col-md-4 col-sm-5 col-xs-12">
+                                        <div class="cart-info-title">Price</div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-2 col-xs-12">
+                                        <div class="cart-info-title qty-title">QUANTITY</div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-5 col-xs-12">
+                                        <div class="cart-info-title total-title">TOTAL</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-line"></div>
+                    <div class="cart-item-wrapper">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-5 col-sm-4 col-xs-12">
+                                        <img src="images/image-product-03.jpg" class="cart-product-image" alt="cart-product-image">
+                                    </div>
+                                    <div class="col-md-7 col-sm-7 col-xs-12">
+                                        <div class="cart-product-description-wrap">
+                                            <h4 class="product-name">FLAWLESS FOUNDATION</h4>
+                                            <p>Shade: W2 Ivory</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-2 col-xs-12">
+                                        <div class="cart-product-price">$39.95</div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-2 col-xs-12">
+                                        <div class="cart-product-qty">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                            <input class="number-product" type="number" value="2" min="1">
+                                            <span class="glyphicon glyphicon-minus"></span>
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-2 col-xs-12">
+                                        <div class="cart-product-total">$79.90</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cart-item-wrapper">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-5 col-sm-4 col-xs-12">
+                                        <img src="images/image-product-03.jpg" class="cart-product-image" alt="cart-product-image">
+                                    </div>
+                                    <div class="col-md-7 col-sm-7 col-xs-12">
+                                        <div class="cart-product-description-wrap">
+                                            <h4 class="product-name">FLAWLESS CONCEALER</h4>
+                                            <p>Shade: 02 Porcelain Beige</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-2 col-xs-12">
+                                        <div class="cart-product-price">$24.95</div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-2 col-xs-12">
+                                        <div class="cart-product-qty">
+
+                                            <span class="glyphicon glyphicon-plus"></span>
+
+                                            <input class="number-product" type="number" value="2" min="1">
+
+                                            <span class="glyphicon glyphicon-minus"></span>
+
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4 col-sm-2 col-xs-12">
+                                        <div class="cart-product-total">$24.95</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="discoun-cart">
+                        <div class="row">
+                            <div class="col-sm-7 col-xs-12">
+                                <div class="discoun-wrapper">
+                                    <p class="discount-text">Gift card or discount code? Add it at the payment step</p>
+                                    <p class="delivery">Delivery notes</p>
+                                    <textarea class="text-notes"></textarea>
+                                    <p class="secure-payment">100% Secure paymrnt</p>
+                                    <div class="payment-systems">
+                                        <img src="images/icon-payment-visa-light.svg" class="icon-payment" alt="cart-product-image">
+                                        <img src="images/icon-payment-mastercard-light.svg" class="icon-payment" alt="cart-product-image">
+                                        <img src="images/icon-payment-amex-light.svg" class="icon-payment" alt="cart-product-image">
+                                        <img src="images/icon-payment-paypal-light.svg" class="icon-payment" alt="cart-product-image">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-5 col-xs-12">
+                                <div class="total-wrapper">
+                                    <span class="total-sum">Total
+                                        <span class="sum">$124.80</span>
+                                    </span>
+                                    <div class="price-button">
+                                        <a class="btn add-to-bag" href="#">YOU QUALIFY FOR
+                                         <span class="free">FREE SHIPPING!</span>
+                                        </a>
+                                    </div>
+                                    <div class="text-order">
+                                        <span>Complete your order and earn
+                                            <span class="text-order-style">55 points for discount</span> on a future purchase
+                                        </span>
+                                    </div>
+                                    <div class="price-button">
+                                        <a class="btn add-to-securely" href="#">CONTINUE SECURELY</a>
+                                    </div>
+                                    <div class="shopping-back">
+                                        <a class="return-to-shopping" href="#">OR KEEP SHOPPING</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
   <form action="/cart" method="post" novalidate>
     <table class="responsive-table">
@@ -106,6 +257,9 @@
     <input type="submit" name="checkout" class="btn" value="{{ 'cart.general.checkout' | t }}">
   </form>
 {% else %}
+
+
+
   <h1>{{ 'cart.general.title' | t }}</h1>
 
   {% comment %}

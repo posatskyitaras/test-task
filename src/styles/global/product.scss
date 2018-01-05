@@ -1,0 +1,229 @@
+.main-product-section {
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.product-wrapper {
+    margin-top: 30px;
+}
+
+.product-item-wrapper {
+    padding: 30px 0;
+    border-bottom: 1px solid #f5eee9;
+    border-top: 1px solid #f5eee9;
+    .product-image {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    .product-name {
+        font-size: 20px;
+        letter-spacing: 1px;
+        color: #5a524f;
+        margin-bottom: 15px;
+    }
+    .product-name-description {
+        font-size: 18px;
+        letter-spacing: 1px;
+        color: #5a524f;
+        margin-bottom: 15px;
+    }
+}
+
+.wrapper-product-qty {
+    position: relative;
+    width: 73px;
+    margin: 15px 0;
+    .glyphicon-plus,
+    .glyphicon-minus {
+        position: absolute;
+        font-size: 8px;
+        cursor: default;
+        padding: 0 5px;
+        line-height: 36px;
+        cursor: pointer;
+    }
+    .glyphicon-minus {
+        left: 0;
+    }
+    .glyphicon-plus {
+        right: 0;
+    }
+}
+
+.number-product {
+    display: inline-block;
+    width: 100%;
+    height: 38px;
+    color: #5a524f;
+    border: solid 1px #ddd7d4;
+    text-align: center;
+    outline: none;
+    letter-spacing: 1px;
+    &:focus {
+        outline: none !important;
+    }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    &::-ms-expand {
+        display: none;
+    }
+}
+
+.glyphicon-remove {
+    position: absolute;
+    font-size: 8px;
+    cursor: default;
+    padding: 0 5px;
+    line-height: 36px;
+    cursor: pointer;
+}
+
+.glyphicon-remove {
+    right: -25px;
+    color: #ed9d9d;
+}
+
+.data-price-wrapper {
+    margin-bottom: 15px;
+    .product-price {
+        font-family: Intro;
+        font-size: 16px;
+        line-height: 1.57;
+        text-align: center;
+        font-weight: 600;
+        color: #5a524f;
+        padding-right: 10px;
+    }
+    .product-price-valued {
+        font-family: Intro;
+        font-size: 16px;
+        line-height: 1.57;
+        text-align: center;
+        color: #857e7b;
+    }
+}
+
+.description-text {
+    font-family: Intro;
+    font-size: 16px;
+    line-height: 1.57;
+    color: #857e7b;
+}
+
+.main-product-section {
+    .product-price-button {
+        padding: 15px 0 0;
+    }
+    .add-to-securely {
+        min-width: 100%;
+        height: 38px;
+        border-radius: 2px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        background-color: #5a524f;
+        text-transform: uppercase;
+        display: inline-block;
+        margin: 0;
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-align: center;
+        color: #ffffff;
+        padding: 10px;
+        &:hover {
+            opacity: 0.9;
+            outline: none;
+        }
+        &:active {
+            opacity: 0.9;
+        }
+        &:focus {
+            opacity: 0.9;
+            outline: none;
+        }
+    }
+}
+
+.product-discount {
+    text-transform: uppercase;
+    padding: 36px 0px 0px;
+}
+
+.product-discoun-wrapper {
+    width: 70%;
+}
+
+.product-discount-text {
+    font-size: 15px;
+    line-height: 1.6;
+    text-align: left;
+    color: rgb(133, 126, 123);
+}
+
+.product-secure-payment {
+    font-size: 12px;
+    line-height: 2.33;
+    letter-spacing: 0.9px;
+    text-align: left;
+    color: rgb(90, 82, 79);
+    padding: 22px 0px 0px;
+}
+
+.product-payment-systems {
+    padding: 4px 0px 0px;
+}
+
+.product-icon-payment {
+    margin-right: 12px;
+    width: 50px;
+    height: 30px;
+    background-color: rgb(251, 247, 244);
+    border-radius: 4px;
+}
+
+.product-social-wrapper {
+    margin-top: 15px;
+    .icon-social {
+        margin-right: 16px;
+    }
+}
+
+.asdeqw {
+    padding-right: 15px;
+}
+
+.cdasdqwwel {
+    background-color: red;
+}
+
+.wrapper-comments {
+    text-align: right;
+}
+
+.delivery-comments {
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 2.33;
+    letter-spacing: 1px;
+    text-align: left;
+    color: rgb(90, 82, 79);
+}
+
+.product-text-notes {
+    width: 100%;
+    height: 60px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(245, 238, 233);
+    border-image: initial;
+    &:focus {
+        outline: none;
+    }
+}

@@ -1,6 +1,6 @@
 {% paginate collection.products by 12 %}
   <header role="banner">
-    <h1>{{ collection.title }}</h1>
+    {% comment %} <h1>{{ collection.title }}</h1> {% endcomment %}
     {% if collection.description != blank %}
       <div class="rte">
         {{ collection.description }}
@@ -24,74 +24,263 @@
     {% endif %}
   </header>
 
-
-    
   <div>
-    {% for product in collection.products %}
-      <div>
-        {% if product.featured_image != blank %}
-          <a href="{{ product.url | within: collection }}">
-            {{ product.featured_image.src | img_url: '480x480' | img_tag: product.featured_image.alt }}
-          </a>
-        {% endif %}
+      <section class="breadcrumb-text">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-2 col-sm-3">
+                      <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb breadcrumb-list">
+                              <li class="breadcrumb-item">
+                                  <a href="/" class="no-active">HOME</a>
+                              </li> 
+                              <li class="breadcrumb-item list-item active">CATALOG</li>
+                          </ol>
+                      </nav>
+                  </div>
+                  <div class="col-lg-9 col-lg-offset-1 col-sm-9">
+                      <p class="p-discover">Discover Nude by Nature’s 100% naturally derived make up for Face, Eyes, and Lips, plus Brushes & Tools, Starter Kits and Value Kits offering great value at a small price. Get the flawless, airbrushed complexion of your dreams and
+                          add a little colour today.</p>
+                  </div>
+              </div>
+          </div>
+      </section>
 
-        <p>
-          <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-        </p>
-        <p>
-          {% if product.compare_at_price > product.price %}
+    <section class="main-collection-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-sm-3">
+                    <div class="filter-wrapper">
+                        <button class="accordion">CATEGORIES</button>
+                        <div class="panel">
+                            <ul>
+                                <li>
+                                    <a href="#">All</a>
+                                </li>
+                                <li>
+                                    <a href="#">Foundations</a>
+                                </li>
+                                <li>
+                                    <a href="#">BB Creams</a>
+                                </li>
+                                <li>
+                                    <a href="#">Concealers</a>
+                                </li>
+                                <li>
+                                    <a href="#">Primers</a>
+                                </li>
+                                <li>
+                                    <a href="#">Finishing Powders</a>
+                                </li>
+                                <li>
+                                    <a href="#">Contour & Highlight</a>
+                                </li>
+                                <li>
+                                    <a href="#">Blushes</a>
+                                </li>
+                                <li>
+                                    <a href="#">Bronzers</a>
+                                </li>
+                                <li>
+                                    <a href="#">Illuminators</a>
+                                </li>
+                                <li>
+                                    <a href="#">Palettes & Gift Sets</a>
+                                </li>
+                            </ul>
+                        </div>
 
-            {% if product.price_varies %}
-              {%- assign sale_price = product.price | money -%}
-              {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-            {% else %}
-              {{ 'products.product.on_sale' | t }}
-              {{ product.price | money }}
-            {% endif %}
+                        <button class="accordion">SKIN TONE</button>
+                        <div class="panel">
+                            <ul>
+                                <li>
+                                    <a href="#">1</a>
+                                </li>
+                                <li>
+                                    <a href="#">2</a>
+                                </li>
+                                <li>
+                                    <a href="#">3</a>
+                                </li>
+                                <li>
+                                    <a href="#">4 </a>
+                                </li>
+                            </ul>
+                        </div>
 
-          {% else %}
+                        <button class="accordion">UNDERTONE</button>
+                        <div class="panel">
+                            <ul>
+                                <li>
+                                    <a href="#">All</a>
+                                </li>
+                                <li>
+                                    <a href="#">Cool (pink)</a>
+                                </li>
+                                <li>
+                                    <a href="#">Neutral (pink & golden)</a>
+                                </li>
+                                <li>
+                                    <a href="#">Warm (golden)</a>
+                                </li>
+                            </ul>
+                        </div>
 
-            {% if product.price_varies %}
-              {%- assign price = product.price | money -%}
-              {{ 'products.product.from_text_html' | t: price: price }}
-            {% else %}
-              {{ product.price | money }}
-            {% endif %}
+                        <button class="accordion">COVERAGE</button>
+                        <div class="panel">
+                            <ul>
+                                <li>
+                                    <a href="#">All</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sheer to Light</a>
+                                </li>
+                                <li>
+                                    <a href="#">Light to Medium</a>
+                                </li>
+                                <li>
+                                    <a href="#">Medium to Full</a>
+                                </li>
+                            </ul>
+                        </div>
 
-          {% endif %}
+                        <button class="accordion">FINISH</button>
+                        <div class="panel">
+                            <ul>
+                                <li>
+                                    <a href="#">All</a>
+                                </li>
+                                <li>
+                                    <a href="#">Natural</a>
+                                </li>
+                                <li>
+                                    <a href="#">Dewy Radiant</a>
+                                </li>
+                                <li>
+                                    <a href="#">Satin Radiant</a>
+                                </li>
+                                <li>
+                                    <a href="#">Satin Matte</a>
+                                </li>
+                                <li>
+                                    <a href="#">Matte</a>
+                                </li>
+                            </ul>
+                        </div>
 
-          {% if product.compare_at_price > product.price %}
-            <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-            <s>{{ product.compare_at_price | money }}</s>
-          {% endif %}
+                        <button class="accordion">RATINGS</button>
+                        <div class="panel">
+                            <ul>
+                                <li>
+                                    <a href="#">All</a>
+                                </li>
+                                <li>
+                                    <a href="#">1</a>
+                                </li>
+                                <li>
+                                    <a href="#">2</a>
+                                </li>
+                                <li>
+                                    <a href="#">3</a>
+                                </li>
+                            </ul>
+                        </div>
 
-          {% unless product.available %}
-            {{ 'products.product.sold_out' | t }}
-          {% endunless %}
-        </p>
-      </div>
+                        <button class="accordion">PRICE</button>
+                        <div class="panel">
+                            <ul>
+                                <li>
+                                    <a href="#">PRICE TEXT</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-    {% else %}
-      {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
-        {% for i in (1..8) %}
-          <a href="#">
-            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
-          </a>
+                <div class="col-lg-9 col-lg-offset-1 col-sm-9">
+                    <div class="row">
+                    {% for product in collection.products %}
+                        <div class="col-sm-4">
+                            <div class="product-wrapper">
+                              <div>
+                                {% if product.featured_image != blank %}
+                                  <a href="{{ product.url | within: collection }}">
+                                    {{ product.featured_image.src | img_url: '480x480' | img_tag: product.featured_image.alt }}
+                                  </a>
+                                {% endif %}
+                                <p class="p-neme-collection">
+                                  <a class="p-neme-collection" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+                                </p>
+                                <p>
+                                  {% if product.compare_at_price > product.price %}
+                                    {% if product.price_varies %}
+                                      {%- assign sale_price = product.price | money -%}
+                                      {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                                    {% else %}
+                                      <p class="p-price-valued"> 
+                                          {{ 'products.product.on_sale' | t }}
+                                          <s>{{ product.compare_at_price | money }}</s>
+                                      </p>
+                                    {% endif %}
+                                  {% else %}
+                                    {% if product.price_varies %}
+                                      {%- assign price = product.price | money -%}
+                                      {{ 'products.product.from_text_html' | t: price: price }}
+                                    {% else %}
+                                      <p class="p-price"> {{ product.price | money }} </p>
+                                    {% endif %}
+                                  {% endif %}
+                                  {% if product.compare_at_price > product.price %}
+                                    <p class="p-price">        
+                                      <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span> 
+                                       {{ product.price | money }}
+                                     </p>
+                                  {% endif %}
+                                  {% unless product.available %}
+                                    {{ 'products.product.sold_out' | t }}
+                                  {% endunless %}
+                                </p>
+                                    <div class="price-button"> 
+                                        <button type="submit" class="btn add-to-bag" >
+                                            {% if current_variant.available %}
+                                            <span class="btn-text btn-text-with-arrow">
+                                                {{ 'products.product.add_to_cart' | t }}
+                                            </span>
+                                            {% else %}
+                                            <span class="btn-text">
+                                                {{ 'products.product.sold_out' | t }}
+                                            </span>
+                                            {% endif %}
+                                        </button>
+                                    </div>
+                               </div>
+                            </div>
+                        </div>
+                        {% else %}
+                          {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+                            {% for i in (1..8) %}
+                              <a href="#">
+                                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
+                              </a>
 
-          <p>
-            <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
-          </p>
+                              <p>
+                                <a href="#">{{ 'homepage.onboarding.product_title' | t }}</a>
+                              </p>
 
-          <p>
-            {{ 1999 | money }}
-          </p>
-        {% endfor %}
-      {% else %}
-        <p>{{ 'collections.general.no_matches' | t }}</p>
-      {% endif %}
+                              <p>
+                                {{ 1999 | money }}
+                              </p>
+                            {% endfor %}
+                          {% else %}
+                            <p>{{ 'collections.general.no_matches' | t }}</p>
+                          {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+    </section>
 
-    {% endfor %}
   </div>
 
   {% if paginate.pages > 1 %}

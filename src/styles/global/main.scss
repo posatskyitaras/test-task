@@ -1,3 +1,6 @@
+$Intro: "Intro";
+$IntroLight: "IntroLight";
+$background-color: #ffffff;
 body {
     margin: 0;
     padding: 0;
@@ -67,10 +70,11 @@ h6 {
 }
 
 .banner-head {
+    top: -1px;
     position: relative;
     text-align: center;
     color: #f8f8f8;
-    //background: url(../images/image-collection-banner.jpg) no-repeat center center;
+    background: url(../images/image-collection-banner.jpg) no-repeat center center;
     background-size: cover;
     height: 15.3vw;
     .face {
@@ -222,6 +226,12 @@ label.showing {
     line-height: 1.5;
     text-align: center;
     color: #5a524f;
+    &:hover,
+    &:focus {
+        color: #5a524f;
+        text-decoration: none;
+        opacity: 0.8;
+    }
 }
 
 .p-price {
@@ -270,5 +280,87 @@ label.showing {
     }
     .link-button {
         text-decoration: none;
+    }
+}
+
+.navbar-default {
+    background-color: #fceee1;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    opacity: 1;
+    .navbar-brand {
+        font-size: 22px;
+        font-weight: 500;
+        color: #857e7b;
+    }
+    .navbar-nav {
+        .site-nav--active {
+            .site-nav__link {
+                background-color: #f1ddcb;
+                font-size: 15px;
+                font-weight: 500;
+                color: #857e7b;
+                &:hover,
+                &:focus {
+                    background-color: #ecd8c5;
+                }
+            }
+        }
+        .site-nav__link {
+            font-size: 15px;
+            font-weight: 500;
+            color: #857e7b;
+            &:hover,
+            &:focus {
+                background-color: #ecd8c5;
+            }
+        }
+    }
+}
+
+.product-lebel {
+    background-color: #e7e7e7;
+    outline: none !important;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    &:hover,
+    &:focus {
+        opacity: 0.8;
+    }
+}
+
+.search-product {
+    background-color: #e7e7e7;
+    outline: none !important;
+    &:hover,
+    &:focus {
+        opacity: 0.8;
+    }
+}
+
+.footer-wrapper {
+    overflow: hidden;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 8vw;
+    background-color: #fceee1;
+    text-align: center;
+}
+
+.readcrumb-footer {
+    background-color: #fceee1;
+}
+
+@media only screen and (max-width: 768px) {
+    .footer-wrapper {
+        height: 45vw;
     }
 }

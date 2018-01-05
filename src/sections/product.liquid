@@ -9,24 +9,6 @@
   <meta itemprop="image" content="{{ featured_image | img_url: '600x600' }}">
   <meta itemprop="description" content="{{ product.description | strip_html | escape }}">
 
-  {% if featured_image != blank %}
-    <img src="{{ featured_image | img_url: '480x480' }}" alt="{{ featured_image.alt | escape }}" data-product-featured-image>
-  {% endif %}
-
-  {% if product.images.size > 1 %}
-    <ul>
-      {% for image in product.images %}
-        <li>
-          <a href="{{ image.src | img_url: '480x480' }}" data-product-single-thumbnail>
-            <img src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-
-  <h1>{{ product.title }}</h1>
-  <p>{{ product.vendor }}</p>
 
   <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
     <meta itemprop="priceCurrency" content="{{ shop.currency }}">
@@ -34,82 +16,144 @@
     <link itemprop="availability" href="http://schema.org/{% if current_variant.available %}InStock{% else %}OutOfStock{% endif %}">
 
     <form action="/cart/add" method="post" enctype="multipart/form-data">
-      {% unless product.has_only_default_variant %}
-        {% for option in product.options_with_values %}
-          <div class="selector-wrapper js">
-            <label for="SingleOptionSelector-{{ forloop.index0 }}">
-              {{ option.name }}
-            </label>
 
-            <select
-              id="SingleOptionSelector-{{ forloop.index0 }}"
-              data-single-option-selector
-              data-index="option{{ option.position }}">
-              {% for value in option.values %}
-                <option
-                  value="{{ value | escape }}"
-                  {% if option.selected_value == value %}selected="selected"{% endif %}>
-                    {{ value }}
-                </option>
-              {% endfor %}
-            </select>
-          </div>
-        {% endfor %}
-      {% endunless %}
+        <section class="main-product-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1 col-sm-12">
+                        <div class="product-wrapper">
+                            {% comment %}
+                            <div class="product-border-line"></div>
+                            {% endcomment %}
+                            <div class="product-item-wrapper">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        {% if featured_image != blank %}
+                                        <img src="{{ featured_image | img_url: '480x480' }}" class="product-image" alt="{{ featured_image.alt | escape }}" data-product-featured-image> {% endif %} {% comment %} {% if product.images.size > 1 %}
+                                        <ul>
+                                            {% for image in product.images %}
+                                            <li>
+                                                <a href="{{ image.src | img_url: '480x480' }}" data-product-single-thumbnail>
+                                                    <img src="{{ image.src | img_url: '160x160' }}" alt="{{ image.alt | escape }}">
+                                                </a>
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %} {% endcomment %}
+                                    </div>
+                                    <div class="col-md-5 col-md-offset-1">
+                                        <div class="product-description-wrap">
+                                            <h4 class="product-name">{{ product.title }}</h4>
+                                            <p class="product-name-description">{{ product.vendor }}</p>
+                                        </div>
+                                        <div class="wrapper-product-qty">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                            <input class="number-product" type="number" id="Quantity" name="quantity" value="1" min="1">
+                                            <span class="glyphicon glyphicon-minus"></span>
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </div>
+                                        <div class="data-price-wrapper">
+                                            <span class="product-price" data-product-price>
+                                                {{ current_variant.price | money }}
+                                              </span> {% if product.compare_at_price_max > product.price %}
+                                            <span class="product-price-valued" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                                            <s data-compare-price>
+                                                  {% if current_variant.compare_at_price > current_variant.price %}
+                                                    {{ current_variant.compare_at_price | money }}
+                                                  {% endif %}
+                                                </s> {% endif %}
+                                        </div>
+                                        <p class="description-text">
+                                            Description: Apply the Natural Illusion Pressed Eyeshadow in Sunrise all over the lid.
+                                        </p>
+                                        <div class="product-price-button">
+                                            <button class="btn add-to-securely" type="submit" name="add" data-add-to-cart {% unless current_variant.available %}disabled="disabled" {% endunless %}>
+                                              <span data-add-to-cart-text>
+                                                {% if current_variant.available %}
+                                                  {{ 'products.product.add_to_cart' | t }}
+                                                {% else %}
+                                                  {{ 'products.product.sold_out' | t }}
+                                                {% endif %}
+                                              </span>
+                                          </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-      <select name="id" class="no-js" data-product-select>
-        {% for variant in product.variants %}
-          <option
-            {% if variant == current_variant %}selected="selected"{% endif %}
-            {% unless variant.available %}disabled="disabled"{% endunless %}
-            value="{{ variant.id }}">
-              {{ variant.title }}
-          </option>
-        {% endfor %}
-      </select>
+                            <div class="product-discount">
+                                <div class="row">
+                                    <div class="col-sm-7 col-xs-12">
+                                        <div class="product-discoun-wrapper">
+                                            <p class="product-discount-text">Gift card or discount code? Add it at the payment step</p>
+                                            <p class="product-secure-payment">100% Secure paymrnt</p>
+                                            <div class="product-payment-systems">
+                                                <img src=" {{ 'icon-payment-visa-light.svg' | asset_url }}" class="product-icon-payment" alt="{{ product-icon-payment }} ">
+                                                <img src=" {{ 'icon-payment-mastercard-light.svg' | asset_url }}" class="product-icon-payment" alt="{{ product-icon-payment }} ">
+                                                <img src=" {{ 'icon-payment-amex-light.svg' | asset_url }}" class="product-icon-payment" alt="{{ product-icon-payment }} ">
+                                                <img src=" {{ 'icon-payment-paypal-light.svg' | asset_url }}" class="product-icon-payment" alt="{{ product-icon-payment }} ">
+                                           
+                                                <div class="product-social-wrapper">
+                                                    {% if settings.share_facebook %}
+                                                        <a target="_blank" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}" class="social-sharing__link share-facebook icon-social" title="{{ 'general.social.alt_text.share_on_facebook' | t }}">
+                                                            {% include 'icon-facebook' %}
+                                                            <span class="share-title visually-hidden">{{ 'general.social.alt_text.share_on_facebook' | t }}</span>
+                                                        </a>
+                                                    {% endif %}
 
-      <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
-      <input type="number" id="Quantity" name="quantity" value="1" min="1">
+                                                    {% if settings.share_twitter %}
+                                                        <a target="_blank" href="//twitter.com/share?text={{ share_title | url_param_escape }} url={{ shop.url | append: share_permalink }}" class="social-sharing__link share-twitter icon-social" title="{{ 'general.social.alt_text.share_on_twitter' | t }}">
+                                                            {% include 'icon-twitter' %}
+                                                            <span class="share-title visually-hidden">{{ 'general.social.alt_text.share_on_twitter' | t }}</span>
+                                                        </a>
+                                                    {% endif %}
 
-      <div data-price-wrapper>
-        <span data-product-price>
-          {{ current_variant.price | money }}
-        </span>
+                                                    {% if settings.share_pinterest %}
+                                                        <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ shop.url | append: share_permalink }} media={{ share_image | img_url: '1024x1024' }} description={{ share_title | url_param_escape }}" class="social-sharing__link share-pinterest icon-social" title="{{ 'general.social.alt_text.share_on_pinterest' | t }}">
+                                                            {% include 'icon-pinterest' %}
+                                                            <span class="share-title visually-hidden">{{ 'general.social.alt_text.share_on_pinterest' | t }}</span>
+                                                        </a>
+                                                    {% endif %}
+                                                </div>
+{% comment %} {% if section.settings.show_share_buttons %}
+    {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+  {% endif %}  {% endcomment %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 col-xs-12">
+                                        <div class="wrapper-comments">
+                                            <p class="delivery-comments">Comments</p>
+                                            <textarea class="product-text-notes"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        {% if product.compare_at_price_max > product.price %}
-          <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
-          <s data-compare-price>
-            {% if current_variant.compare_at_price > current_variant.price %}
-              {{ current_variant.compare_at_price | money }}
-            {% endif %}
-          </s>
-        {% endif %}
-      </div>
+        <select name="id" class="no-js" data-product-select>
+            {% for variant in product.variants %}
+            <option
+                {% if variant == current_variant %}selected="selected"{% endif %}
+                {% unless variant.available %}disabled="disabled"{% endunless %}
+                value="{{ variant.id }}">
+                {{ variant.title }}
+            </option>
+            {% endfor %}
+        </select>
 
-      <button
-        type="submit"
-        name="add"
-        data-add-to-cart
-        {% unless current_variant.available %}disabled="disabled"{% endunless %}>
-          <span data-add-to-cart-text>
-            {% if current_variant.available %}
-              {{ 'products.product.add_to_cart' | t }}
-            {% else %}
-              {{ 'products.product.sold_out' | t }}
-            {% endif %}
-          </span>
-      </button>
     </form>
 
-  </div>
+</div>
 
   <div class="rte">
     {{ product.description }}
   </div>
 
-  {% if section.settings.show_share_buttons %}
-    {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
-  {% endif %}
 
   {% unless product == empty %}
     <script type="application/json" data-product-json>

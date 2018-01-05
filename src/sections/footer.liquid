@@ -19,6 +19,7 @@
     {% endfor %}
   </ul>
 
+{% comment %} 
   {% if section.settings.show_payment_icons %}
     {% unless shop.enabled_payment_types == empty %}
       {%- assign payment_icons_available = 'amazon_payments,american_express,apple_pay,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,visa' | split: ',' -%}
@@ -37,7 +38,9 @@
       </ul>
     {% endunless %}
   {% endif %}
+   {% endcomment %}
 
+{% comment %} 
   {%- assign footer_linklist = section.settings.footer_linklist -%}
   {% if linklists[footer_linklist].links.size > 0 %}
     <ul>
@@ -46,10 +49,34 @@
       {% endfor %}
     </ul>
   {% endif %}
+ {% endcomment %}
 
-  <div>
-    <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
-  </div>
+  <section class="footer-section">
+      <div class="footer-wrapper">
+          <div class="footer-image-wrapper page-footer">
+              <div class="breadcrumb-text">
+                  <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb breadcrumb-list readcrumb-footer">
+                          <li class="breadcrumb-item">
+                              <a href="#" class="no-active">HOME</a>
+                          </li>
+                          <li class="breadcrumb-item list-item">
+                              <a href="#" class="no-active">BEAUTY BLOG</a>
+                          </li>
+                          <li class="breadcrumb-item list-item">
+                              <a href="#" class="no-active">HOW TO GUIDES</a>
+                          </li>
+                          <li class="breadcrumb-item list-item active">SUNSET SKIES MAKEUP LOOK</li>
+                      </ol>
+                  </nav>
+              </div>
+              <div class="copyright">
+                  <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
+              </div>
+          </div>
+      </div>
+  </section>
+
 </footer>
 
 {% schema %}
